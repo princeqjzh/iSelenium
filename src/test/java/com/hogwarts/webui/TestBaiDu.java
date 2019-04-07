@@ -14,7 +14,7 @@ public class TestBaiDu extends WebUIBase {
     @Test
     public void baiduSearch() throws Exception{
         testcaseName = "百度搜索UI自动化测试";
-        String checkString = "Selenium";
+        String checkString = "selenium";
 
         logger.info("开始运行自动化测试：" + testcaseName);
 

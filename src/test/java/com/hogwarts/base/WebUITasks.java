@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
  * Created by JiZhi.Qian on 2019/3/11.
  */
 public class WebUITasks {
-    private static int waitShot = 5;
+    private static int waitShot = 30;
     private static Logger logger = Logger.getLogger(WebUITasks.class);
 
     public static void inputText(String txt, WebDriver driver) throws Exception{
@@ -29,7 +29,7 @@ public class WebUITasks {
         long start = System.currentTimeMillis();
         long now = System.currentTimeMillis();
         while(((now - start) < waitShot * 1000) && (wele == null)){
-            wait(waitShot);
+            wait(1);
             wele = driver.findElement(By.xpath(objXpath));
             now = System.currentTimeMillis();
         }
