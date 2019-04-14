@@ -32,6 +32,6 @@ public class TestBaiDu extends WebUIBase {
         wait2s();
 
         String browserTitle = driver.getTitle();
-        Assert.assertTrue("检查页面标题包含‘" + checkString + "’", browserTitle.contains(checkString));
+        Assert.assertTrue("检查页面标题包含‘" + checkString + "’", browserTitle.contains(checkString + "_aaa"));
     }
 }
