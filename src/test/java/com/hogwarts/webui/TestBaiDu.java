@@ -32,13 +32,13 @@ public class TestBaiDu extends WebUIBase {
         wait2s();
 
         String browserTitle = driver.getTitle();
-        Assert.assertTrue("检查页面标题包含‘" + checkString + "’", browserTitle.contains(checkString + "——————————"));
+        Assert.assertTrue("检查页面标题包含‘" + checkString + "’", browserTitle.contains(checkString));
     }
 
     @Test
     public void baiduSearch2() throws Exception{
         testcaseName = "百度搜索UI自动化测试";
-        String checkString = "selenium";
+        String checkString = "王者荣耀";
 
         logger.info("开始运行自动化测试：" + testcaseName);
 
