@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import java.io.*;
 import java.util.Properties;
@@ -24,7 +23,6 @@ public abstract class WebUIBase {
     protected WebDriver.Navigation navigation;
     protected String firefoxPath = "";
     protected String chromePath = "";
-    protected String phantomjsPath = "";
 
     protected int waitTime = 15;
 
@@ -38,13 +36,11 @@ public abstract class WebUIBase {
         logger.info("读入各个webdriver的路径");
         firefoxPath = prop.getProperty("FIREFOX_PATH");
         chromePath = prop.getProperty("CHROME_PATH");
-        phantomjsPath = prop.getProperty("PHANTOMJS_PATH");
         logger.info("firefoxPath = " + firefoxPath);
         logger.info("chromePath = " + chromePath);
-        logger.info("phantomjsPath = " + phantomjsPath);
 
         //设定当前运行的浏览器
-        //需要在环境变量"currentBrowser"中配置当前运行什么浏览器, 可选值"firefox","chrome","phantomjs"
+        //需要在环境变量"currentBrowser"中配置当前运行什么浏览器, 可选值"firefox","chrome"
         setCurBrowser();
         logger.info("当前浏览器：" + curBrowser);
 
@@ -56,9 +52,6 @@ public abstract class WebUIBase {
         } else if (curBrowser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", chromePath);
             driver = new ChromeDriver();
-        } else if (curBrowser.equalsIgnoreCase("phantomjs")) {
-            System.setProperty("phantomjs.binary.path", phantomjsPath);
-            driver = new PhantomJSDriver();
         } else {
             System.setProperty("webdriver.firefox.bin", firefoxPath);
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
@@ -111,7 +104,7 @@ public abstract class WebUIBase {
             return;
         }
 
-        if (value.equalsIgnoreCase("firefox") || value.equalsIgnoreCase("chrome") || value.equalsIgnoreCase("phantomjs")) {
+        if (value.equalsIgnoreCase("firefox") || value.equalsIgnoreCase("chrome")) {
             curBrowser = value.toLowerCase();
         }
     }
