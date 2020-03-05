@@ -15,13 +15,13 @@ public class WebUITasks {
     public static void inputText(String txt, WebDriver driver) throws Exception{
         WebElement searchInput = findElementByXpath("//input[@name='wd' and @id='kw']",driver);
         searchInput.sendKeys(txt);
-        logger.info("输入查询文本：" + txt);
+        logger.info("Search text: " + txt);
     }
 
     public static void clickSearchBtn(WebDriver driver) throws Exception{
         WebElement searchBtn = findElementByXpath("//input[@type='submit' and @id='su']",driver);
         searchBtn.click();
-        logger.info("单击查询按钮");
+        logger.info("Click the search button.");
     }
 
     private static WebElement findElementByXpath(String objXpath, WebDriver driver) throws Exception{
@@ -35,7 +35,7 @@ public class WebUITasks {
         }
 
         if(wele == null){
-            throw new Exception("无法找到元素：" + objXpath);
+            throw new Exception("Can not find out the element: " + objXpath);
         }
 
         return wele;

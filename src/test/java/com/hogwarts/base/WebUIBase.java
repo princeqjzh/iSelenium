@@ -30,11 +30,11 @@ public abstract class WebUIBase {
     @Before
     public void begin() {
         //加载配置文件，注意需要事先将配置文件放到user.home下
-        logger.info("加载配置文件" + propFileName);
+        logger.info("Load properties file:" + propFileName);
         Properties prop = loadFromEnvProperties(propFileName);
 
         //获取浏览器driver路径
-        logger.info("读入各个webdriver的路径");
+        logger.info("Load webdriver path");
         firefoxPath = prop.getProperty("FIREFOX_PATH");
         chromePath = prop.getProperty("CHROME_PATH");
         logger.info("firefoxPath = " + firefoxPath);
@@ -43,7 +43,7 @@ public abstract class WebUIBase {
         //设定当前运行的浏览器
         //需要在环境变量"currentBrowser"中配置当前运行什么浏览器, 可选值"firefox","chrome"
         setCurBrowser();
-        logger.info("当前浏览器：" + curBrowser);
+        logger.info("Current browser is " + curBrowser);
 
         //构造webdriver
         if (curBrowser.equalsIgnoreCase("firefox")) {
@@ -74,7 +74,7 @@ public abstract class WebUIBase {
 
     @After
     public void tearDown() {
-        logger.info("自动化测试" + testcaseName + "结束。");
+        logger.info("Automation test " + testcaseName + " finish!");
 
         if (driver == null) {
             return;
@@ -98,7 +98,8 @@ public abstract class WebUIBase {
             in.close();
         } catch (IOException ioex) {
             ioex.printStackTrace();
-            logger.error("配置文件加载失败，请检查" + path + "路径下是否存在" + propFileName + "文件!");
+            logger.error("Load config file fail, please check " + path + " to confirm if the "
+                    + propFileName + " file exist!");
         }
 
         return prop;

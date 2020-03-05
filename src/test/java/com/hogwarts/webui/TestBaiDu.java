@@ -19,7 +19,7 @@ public class TestBaiDu extends WebUIBase {
 
     @Test
     public void baiduSearch2() throws Exception{
-        String checkString = "王者荣耀";
+        String checkString = "Appium";
         baiduSearch(checkString);
     }
 
@@ -30,12 +30,12 @@ public class TestBaiDu extends WebUIBase {
      * @throws Exception
      */
     public void baiduSearch(String checkString) throws Exception {
-        testcaseName = "百度搜索UI自动化测试";
+        testcaseName = "Baidu search UI automation test.";
 
-        logger.info("开始运行自动化测试：" + testcaseName);
+        logger.info("Start the automation test: " + testcaseName);
 
         //浏览器中打开百度
-        logger.info("浏览器中打开百度网站");
+        logger.info("Open the www.baidu.com");
         navigation.to("http://www.baidu.com");
         wait2s();
 
@@ -48,6 +48,6 @@ public class TestBaiDu extends WebUIBase {
         wait2s();
 
         String browserTitle = driver.getTitle();
-        Assert.assertTrue("检查页面标题包含‘" + checkString + "’", browserTitle.contains(checkString));
+        Assert.assertTrue("Check if the web page contains the key word ‘" + checkString + "’", browserTitle.contains(checkString));
     }
 }
