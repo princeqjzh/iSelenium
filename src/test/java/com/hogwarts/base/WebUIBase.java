@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.*;
@@ -52,6 +53,11 @@ public abstract class WebUIBase {
         } else if (curBrowser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", chromePath);
             driver = new ChromeDriver();
+        } else if (curBrowser.equalsIgnoreCase("nogui")) {
+            System.setProperty("webdriver.chrome.driver", chromePath);
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--headless");
+            driver = new ChromeDriver(chromeOptions);
         } else {
             System.setProperty("webdriver.firefox.bin", firefoxPath);
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
@@ -104,12 +110,13 @@ public abstract class WebUIBase {
             return;
         }
 
-        if (value.equalsIgnoreCase("firefox") || value.equalsIgnoreCase("chrome")) {
+        if (value.equalsIgnoreCase("firefox") || value.equalsIgnoreCase("chrome")
+                || value.equalsIgnoreCase("nogui")) {
             curBrowser = value.toLowerCase();
         }
     }
 
-    protected void wait2s(){
+    protected void wait2s() {
         try {
             Thread.sleep(2 * 1000);
         } catch (InterruptedException e) {

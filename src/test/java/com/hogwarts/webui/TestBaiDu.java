@@ -12,33 +12,25 @@ public class TestBaiDu extends WebUIBase {
     private Logger logger = Logger.getLogger(TestBaiDu.class);
 
     @Test
-    public void baiduSearch() throws Exception{
-        testcaseName = "百度搜索UI自动化测试";
+    public void baiduSearch1() throws Exception{
         String checkString = "selenium";
-
-        logger.info("开始运行自动化测试：" + testcaseName);
-
-        //浏览器中打开百度
-        logger.info("浏览器中打开百度网站");
-        navigation.to("http://www.baidu.com");
-        wait2s();
-
-        //输入搜索内容：Selenium
-        WebUITasks.inputText(checkString,driver);
-        wait2s();
-
-        //单击搜索按钮
-        WebUITasks.clickSearchBtn(driver);
-        wait2s();
-
-        String browserTitle = driver.getTitle();
-        Assert.assertTrue("检查页面标题包含‘" + checkString + "’", browserTitle.contains(checkString));
+        baiduSearch(checkString);
     }
 
     @Test
     public void baiduSearch2() throws Exception{
-        testcaseName = "百度搜索UI自动化测试";
         String checkString = "王者荣耀";
+        baiduSearch(checkString);
+    }
+
+    /**
+     * 百度搜索公共子函数
+     *
+     * @param checkString 搜索关键词
+     * @throws Exception
+     */
+    public void baiduSearch(String checkString) throws Exception {
+        testcaseName = "百度搜索UI自动化测试";
 
         logger.info("开始运行自动化测试：" + testcaseName);
 
