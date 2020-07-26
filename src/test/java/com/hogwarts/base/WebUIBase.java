@@ -11,9 +11,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.io.*;
 import java.util.Properties;
 
-/**
- * Created by JiZhi.Qian on 2019/3/11.
- */
 public abstract class WebUIBase {
     private Logger logger = Logger.getLogger(WebUIBase.class);
     private String propFileName = "iselenium.properties";

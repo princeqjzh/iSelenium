@@ -5,9 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-/**
- * Created by JiZhi.Qian on 2019/3/11.
- */
 public class WebUITasks {
     private static int waitShot = 30;
     private static Logger logger = Logger.getLogger(WebUITasks.class);

@@ -5,21 +5,18 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by JiZhi.Qian on 2019/3/11.
- */
 public class TestBaiDu extends WebUIBase {
     private Logger logger = Logger.getLogger(TestBaiDu.class);
 
     @Test
     public void baiduSearch1() throws Exception{
-        String checkString = "selenium";
+        String checkString = "今日头条";
         baiduSearch(checkString);
     }
 
     @Test
     public void baiduSearch2() throws Exception{
-        String checkString = "Appium";
+        String checkString = "王者荣耀";
         baiduSearch(checkString);
     }
 
