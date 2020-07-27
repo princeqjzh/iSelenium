@@ -1,8 +1,8 @@
 package com.hogwarts.base;
 
 import org.apache.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,7 +24,7 @@ public abstract class WebUIBase {
 
     protected int waitTime = 15;
 
-    @Before
+    @BeforeEach
     public void begin() {
         //加载配置文件，注意需要事先将配置文件放到user.home下
         logger.info("Load properties file:" + propFileName);
@@ -69,7 +69,7 @@ public abstract class WebUIBase {
         navigation = driver.navigate();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         logger.info("Automation test " + testcaseName + " finish!");
 

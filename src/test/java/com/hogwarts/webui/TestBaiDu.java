@@ -2,8 +2,8 @@ package com.hogwarts.webui;
 
 import com.hogwarts.base.*;
 import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class TestBaiDu extends WebUIBase {
     private Logger logger = Logger.getLogger(TestBaiDu.class);
@@ -45,6 +45,6 @@ public class TestBaiDu extends WebUIBase {
         wait2s();
 
         String browserTitle = driver.getTitle();
-        Assert.assertTrue("Check if the web page contains the key word ‘" + checkString + "’", browserTitle.contains(checkString));
+        Assertions.assertTrue(browserTitle.contains(checkString), "Check if the web page contains the key word ‘" + checkString + "’");
     }
 }
