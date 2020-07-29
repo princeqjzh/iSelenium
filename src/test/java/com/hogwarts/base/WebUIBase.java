@@ -38,7 +38,7 @@ public abstract class WebUIBase {
         logger.info("chromePath = " + chromePath);
 
         //设定当前运行的浏览器
-        //需要在环境变量"currentBrowser"中配置当前运行什么浏览器, 可选值"firefox","chrome"
+        //需要在环境变量"currentBrowser"中配置当前运行什么浏览器, 可选值"firefox","chrome","nogui"
         setCurBrowser();
         logger.info("Current browser is " + curBrowser);
 
