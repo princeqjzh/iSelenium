@@ -7,8 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 public abstract class WebUIBase {
@@ -21,11 +25,12 @@ public abstract class WebUIBase {
     protected WebDriver.Navigation navigation;
     protected String firefoxPath = "";
     protected String chromePath = "";
+    protected String dockerRemote = "";
 
     protected int waitTime = 15;
 
     @BeforeEach
-    public void begin() {
+    public void begin() throws MalformedURLException {
         //加载配置文件，注意需要事先将配置文件放到user.home下
         logger.info("Load properties file:" + propFileName);
         Properties prop = loadFromEnvProperties(propFileName);
@@ -34,8 +39,10 @@ public abstract class WebUIBase {
         logger.info("Load webdriver path");
         firefoxPath = prop.getProperty("FIREFOX_PATH");
         chromePath = prop.getProperty("CHROME_PATH");
+        dockerRemote = prop.getProperty("DOCKER_REMOTE");
         logger.info("firefoxPath = " + firefoxPath);
         logger.info("chromePath = " + chromePath);
+        logger.info("dockerRemote = " + dockerRemote);
 
         //设定当前运行的浏览器
         //需要在环境变量"currentBrowser"中配置当前运行什么浏览器, 可选值"firefox","chrome","nogui"
@@ -55,6 +62,8 @@ public abstract class WebUIBase {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--headless");
             driver = new ChromeDriver(chromeOptions);
+        } else if (curBrowser.equalsIgnoreCase("docker")) {
+            driver = new RemoteWebDriver(new URL(dockerRemote), DesiredCapabilities.chrome());
         } else {
             System.setProperty("webdriver.firefox.bin", firefoxPath);
             System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
@@ -109,7 +118,7 @@ public abstract class WebUIBase {
         }
 
         if (value.equalsIgnoreCase("firefox") || value.equalsIgnoreCase("chrome")
-                || value.equalsIgnoreCase("nogui")) {
+                || value.equalsIgnoreCase("nogui") || value.equalsIgnoreCase("docker")) {
             curBrowser = value.toLowerCase();
         }
     }
