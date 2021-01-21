@@ -103,7 +103,6 @@ public abstract class WebUIBase {
             prop.load(in);
             in.close();
         } catch (IOException ioex) {
-            ioex.printStackTrace();
             logger.error("Load config file fail, please check " + path + " to confirm if the "
                     + propFileName + " file exist!");
         }
