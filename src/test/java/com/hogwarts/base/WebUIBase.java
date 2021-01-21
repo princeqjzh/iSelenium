@@ -39,7 +39,7 @@ public abstract class WebUIBase {
         logger.info("Load webdriver path");
         firefoxPath = prop.getProperty("FIREFOX_PATH");
         chromePath = prop.getProperty("CHROME_PATH");
-        dockerRemote = prop.getProperty("DOCKER_REMOTE");
+        dockerRemote = prop.getProperty("DOCKER_REMOTE", "http://localhost:5555/wd/hub");
         logger.info("firefoxPath = " + firefoxPath);
         logger.info("chromePath = " + chromePath);
         logger.info("dockerRemote = " + dockerRemote);
