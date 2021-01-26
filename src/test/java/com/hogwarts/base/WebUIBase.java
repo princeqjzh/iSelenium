@@ -44,8 +44,7 @@ public abstract class WebUIBase {
 
         //构造webdriver
         if (curBrowser.equalsIgnoreCase("firefox")) {
-            System.setProperty("webdriver.firefox.bin", firefoxPath);
-            System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+            System.setProperty("webdriver.gecko.driver", firefoxPath);
             driver = new FirefoxDriver();
         } else if (curBrowser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", chromePath);
@@ -56,8 +55,7 @@ public abstract class WebUIBase {
             chromeOptions.addArguments("--headless");
             driver = new ChromeDriver(chromeOptions);
         } else {
-            System.setProperty("webdriver.firefox.bin", firefoxPath);
-            System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+            System.setProperty("webdriver.gecko.driver", firefoxPath);
             driver = new FirefoxDriver();
         }
 
@@ -114,9 +112,9 @@ public abstract class WebUIBase {
         }
     }
 
-    protected void wait2s() {
+    protected void wait5s() {
         try {
-            Thread.sleep(2 * 1000);
+            Thread.sleep(5 * 1000);
         } catch (InterruptedException e) {
 
         }
