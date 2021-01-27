@@ -7,3 +7,4 @@
 5. 支持浏览器类型：chrome, firefox, headless (no-gui)
 6. 配置文件：src/resources/iselenium.properties ， 需要放置到到系统的 ${user.home} 下
 7. 配置文件中的对应浏览器webdriver驱动程序的路径要根据运行环境实际预先设定
+8. Gecko driver的使用请参考https://github.com/mozilla/geckodriver
