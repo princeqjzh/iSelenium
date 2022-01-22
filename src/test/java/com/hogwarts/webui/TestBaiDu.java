@@ -45,6 +45,7 @@ public class TestBaiDu extends WebUIBase {
         wait5s();
 
         String browserTitle = driver.getTitle();
-        Assertions.assertTrue(browserTitle.contains(checkString), "Check if the web page contains the key word ‘" + checkString + "’");
+        Assertions.assertTrue(browserTitle.contains(checkString) || browserTitle.contains("安全验证")
+                , "Check if the web page contains the key word ‘" + checkString + "’");
     }
 }
